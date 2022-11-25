@@ -15,10 +15,9 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', function () {
-    return view('dashboard');
-});
-
+Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
 Route::post('/signup', [UserController::class, 'registerUser'])->name('register');
+Route::post('/login', [UserController::class, 'loginUser'])->name('login');
+Route::get('/logout', [UserController::class, 'logoutUser'])->name('logout');

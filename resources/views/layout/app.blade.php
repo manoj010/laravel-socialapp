@@ -14,11 +14,25 @@
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
+        @auth
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
-            <ul class="navbar-nav active">
+            <ul class="navbar-nav">
                 <li class="nav-item">
-                    <a class="nav-link" href="/">Dashboard</a>
+                    <a class="nav-link">Welcome, {{auth()->user()->name}}</a>
                 </li>
+                <li class="nav-item">
+                    <!-- <a class="nav-link" href="{{route('logout')}}">Log Out</a> -->
+                    <form action="{{route('logout')}}" method="get">
+                        <button type="submit" class="btn btn-danger">Log Out</button>
+                    </form>
+                </li>
+            </ul>
+        </div>
+        @endauth
+
+        @guest
+        <div class="collapse navbar-collapse" id="navbarNavDropdown">
+            <ul class="navbar-nav">
                 <li class="nav-item">
                     <a class="nav-link" href="{{route('signup')}}">Sign Up</a>
                 </li>
@@ -27,6 +41,7 @@
                 </li>
             </ul>
         </div>
+        @endguest
     </nav>
     @yield('content')
 </body>

@@ -17,6 +17,8 @@ use App\Http\Controllers\PostController;
 */
 
 Route::get('/', [PostController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
+Route::post('/addpost', [PostController::class, 'addPost'])->name('addPost');
+Route::get('/delete/{id}', [PostController::class, 'deletePost']);
 
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/signup', [HomeController::class, 'signup'])->name('signup');

@@ -7,10 +7,6 @@ use App\Models\Home;
 
 class HomeController extends Controller
 {
-    public function dashboard() {
-        return view('dashboard');
-    }
-
     public function login() {
         return view('login');
     }

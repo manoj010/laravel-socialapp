@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;
 use App\Http\Controllers\UserController;
+use App\Http\Controllers\PostController;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,7 +16,8 @@ use App\Http\Controllers\UserController;
 |
 */
 
-Route::get('/', [HomeController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
+Route::get('/', [PostController::class, 'dashboard'])->name('dashboard')->middleware(['auth']);
+
 Route::get('/login', [HomeController::class, 'login'])->name('login');
 Route::get('/signup', [HomeController::class, 'signup'])->name('signup');
 

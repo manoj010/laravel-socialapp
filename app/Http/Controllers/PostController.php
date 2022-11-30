@@ -35,6 +35,18 @@ class PostController extends Controller
     public function deletePost($id) {
         $data = Post::find($id);
         $data -> delete();
-        return redirect() -> route('dashboard')->with(['message'=> 'Successfully deleted!!']);
+        return redirect() -> route('dashboard');
+    }
+
+    public function edit($id) {
+        $post = Post::find($id);
+        return view('edit', ['post' => $post]);
+    }
+
+    public function editPost(Request $request) {
+        $postObj = Post::find($request->id);
+        $postObj -> title = $request -> title;
+        $postObj -> save();
+        return redirect() -> route('dashboard');
     }
 }

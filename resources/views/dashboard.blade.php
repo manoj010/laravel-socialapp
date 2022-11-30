@@ -20,7 +20,7 @@
                     <th scope="col" class="px-3">SN</th>
                     <th scope="col">Posts</th>
                     <th scope="col">Posted By</th>
-                    <th scope="col">Delete</th>
+                    <th scope="col" colspan="2">Actions</th>
                 </tr>
             </thead>
             <tbody>
@@ -32,6 +32,11 @@
                         <th scope="row" class="px-3">{{$sn++}}</th>
                         <td scope="row">{{$post->title}}</td>
                         <td scope="row">{{$post->user->name}}</td>
+                        <td scope="row">
+                        @if(auth()->user()->id == $post->user->id)
+                            <button type="button" class="btn btn-danger btn-sm"><a class="text-white text-decoration-none" href="{{url('/edit/'.$post->id)}}">Edit</a></button>
+                        @endif
+                        </td>
                         <td scope="row">
                         @if(auth()->user()->id == $post->user->id)
                             <button type="button" class="btn btn-danger btn-sm"><a class="text-white text-decoration-none" href="{{url('/delete/'.$post->id)}}">Delete</a></button>
